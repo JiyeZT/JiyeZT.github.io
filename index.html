@@ -216,10 +216,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-03-18 21:38:26 / Modified: 21:50:13" itemprop="dateCreated datePublished" datetime="2021-03-18T21:38:26+08:00">2021-03-18</time>
+      <time title="Created: 2021-03-18 21:38:26" itemprop="dateCreated datePublished" datetime="2021-03-18T21:38:26+08:00">2021-03-18</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-03-19 11:04:13" itemprop="dateModified" datetime="2021-03-19T11:04:13+08:00">2021-03-19</time>
+      </span>
 
   
 </div>
@@ -237,9 +243,8 @@
 <li>查询网卡设备名  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    iwctl</span><br><span class="line">    device list</span><br><span class="line">    &#96;&#96;&#96;  </span><br><span class="line">2. 扫描无线网并连接（假设网卡为wlan0，wifi为Wifiname）</span><br></pre></td></tr></table></figure>
  station wlan0 scan<br> station wlan0 get-networks<br> station wlan0 connect wifiname <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3. 测试连接</span><br></pre></td></tr></table></figure>
  ping <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    ctrl+C退出测试，网线可以直接进行测试   </span><br><span class="line"></span><br><span class="line">## 三、修改软件源</span><br><span class="line">1. 同步系统时间(双系统情况下由于UTC设置的不一致，导致时间不同步，进入系统后再修正)</span><br></pre></td></tr></table></figure>
-timedatectl set-ntp true<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2. 使用reflector来获取速度最快的6个镜像，并将地址保存至&#x2F;etc&#x2F;pacman.d&#x2F;mirrorlist（未测试过，仅为备忘）</span><br></pre></td></tr></table></figure>
- reflector -c China -a 6 –sort rate –save /etc/pacman.d/mirrorlist <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3. 手动修改&#x2F;etc&#x2F;pacman.d&#x2F;mirrorlist文件</span><br></pre></td></tr></table></figure>
- vim /etc/pacman.d/mirrorlist <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    输入&#x2F;China 查找到中国源，按yy复制，然后按gg跳到文本开头 按p粘贴。   </span><br><span class="line">4. 更新源</span><br></pre></td></tr></table></figure>
+timedatectl set-ntp true<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line">2. 使用reflector来获取速度最快的6个镜像，并将地址保存至&#x2F;etc&#x2F;pacman.d&#x2F;mirrorlist（未测试过，仅为备忘）</span><br></pre></td></tr></table></figure>
+ reflector -c China -a 6 –sort rate –save /etc/pacman.d/mirrorlist <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">3. 手动修改&#x2F;etc&#x2F;pacman.d&#x2F;mirrorlist文件</span><br><span class="line"></span><br><span class="line">    输入&#x2F;China 查找到中国源，按yy复制，然后按gg跳到文本开头 按p粘贴。   </span><br><span class="line">4. 更新源</span><br></pre></td></tr></table></figure>
 pacman -Syy<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 四、使用fdisk分区</span><br><span class="line">1. 查看存储设备情况</span><br></pre></td></tr></table></figure>
  fdisk -l <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2. 选择要安装进的硬盘，进行分区（假设为nvme0n1）</span><br></pre></td></tr></table></figure>
 fdisk /dev/nvme0n1/<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   进入分区页面，基础命令如下</span><br><span class="line">    &gt; n ： 新建  </span><br><span class="line">    &gt; t ： 修改分区格式  </span><br><span class="line">    &gt; p ： 查看分区情况   </span><br><span class="line">    &gt; w ： 写入分区修改</span><br><span class="line">3. 分区方案  </span><br><span class="line">    &gt; 分区1 -&gt; 200M -&gt; &#x2F;boot&#x2F;EFI</span><br><span class="line">    &gt; 分区2 -&gt; 200M -&gt; &#x2F;boot</span><br><span class="line">    &gt; 分区3 -&gt; 150G -&gt; &#x2F;mnt</span><br><span class="line">4. 格式化分区</span><br></pre></td></tr></table></figure>
